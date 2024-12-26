@@ -1,9 +1,9 @@
-// config/db.config.js
+
 module.exports = {
-    host: 'localhost',        // MySQL host
-    username: 'root',         // MySQL username
-    password: '',             // Leave password empty for no password
+    host: 'localhost',      // Host name
+    user: 'root',           // Your MySQL username
+    password: 'Hung199535hcm@',           // Your MySQL password
     database: 'music_project', // Your database name
-    dialect: 'mysql',         // Dialect should be 'mysql'
+    dialect: 'mysql',       // The dialect for MySQL
   };
   
