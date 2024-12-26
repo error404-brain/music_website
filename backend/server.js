@@ -26,7 +26,7 @@ const imageStorage = multer.diskStorage({
         cb(null, uploadImageDir);
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
+        cb(null, file.originalname);
     },
 });
 
@@ -35,7 +35,7 @@ const musicStorage = multer.diskStorage({
         cb(null, uploadMusicDir);
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
+        cb(null, file.originalname);
     },
 });
 
@@ -52,11 +52,14 @@ app.post('/uploadImage', uploadImage.single('image'), (req, res) => {
 
 app.post('/uploadMusic', uploadMusic.single('music'), (req, res) => {
     if (!req.file) {
+        console.error('Không có nhạc nào được tải lên');
         return res.status(400).send('Không có nhạc nào được tải lên');
     }
     console.log('Nhạc đã tải lên:', req.file);
     res.json({ message: 'Tải nhạc thành công!', file: req.file });
 });
+
+
 
 app.listen(PORT, (error) => {
     if (!error) {
@@ -67,10 +70,10 @@ app.listen(PORT, (error) => {
 });
 
 // Đồng bộ cơ sở dữ liệu
-db.sync({ force: false })
-  .then(() => {
-    console.log('Đồng bộ cơ sở dữ liệu thành công.');
-  })
-  .catch((err) => {
-    console.error('Lỗi khi đồng bộ cơ sở dữ liệu:', err);
-  });
+// db.sync({ force: false })
+//   .then(() => {
+//     console.log('Đồng bộ cơ sở dữ liệu thành công.');
+//   })
+//   .catch((err) => {
+//     console.error('Lỗi khi đồng bộ cơ sở dữ liệu:', err);
+//   });
