@@ -20,4 +20,16 @@ const uploadMusic = multer({ storage: multer.diskStorage({
 router.post('/uploadImage', uploadImage.single('image'), uploadController.uploadImage);
 router.post('/uploadMusic', uploadMusic.single('music'), uploadController.uploadMusic);
 
+// upload.route.js
+router.get('/images', (req, res) => {
+    const imagesPath = path.join(__dirname, '../uploadImage');
+    fs.readdir(imagesPath, (err, files) => {
+      if (err) {
+        return res.status(500).json({ message: 'Không thể lấy danh sách ảnh' });
+      }
+      res.json(files.map(file => `/uploadImage/${file}`)); 
+    });
+  });
+  
+
 module.exports = router;

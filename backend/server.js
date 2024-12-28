@@ -11,6 +11,8 @@ app.use(express.static('public'));
 
 // Sử dụng routes
 app.use('/api', uploadRoutes);
+app.use('/uploadImage', express.static('uploadImage'));
+
 
 const uploadImageDir = 'uploadImage/';
 const uploadMusicDir = 'uploadMusic/';
@@ -32,10 +34,10 @@ app.listen(PORT, (error) => {
 });
 
 // Đồng bộ cơ sở dữ liệu
-db.sequelize.sync({ force: true }) 
-  .then(() => {
-    console.log('Cơ sở dữ liệu đã được đồng bộ hóa thành công!');
-  })
-  .catch((err) => {
-    console.error('Lỗi khi đồng bộ cơ sở dữ liệu:', err);
-  });
+// db.sequelize.sync({ force: false }) 
+//   .then(() => {
+//     console.log('Cơ sở dữ liệu đã được đồng bộ hóa thành công!');
+//   })
+//   .catch((err) => {
+//     console.error('Lỗi khi đồng bộ cơ sở dữ liệu:', err);
+//   });

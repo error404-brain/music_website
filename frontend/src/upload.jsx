@@ -52,39 +52,50 @@ const Upload = () => {
   };
 
   return (
-    <div>
-      <h2>Upload Ảnh</h2>
-      <input type="file" onChange={handleImageChange} />
-      <button onClick={handleImageUpload} disabled={loadingImage}>
-        {loadingImage ? 'Đang tải ảnh...' : 'Tải lên ảnh'}
-      </button>
-      {imageResponse && (
-        <div>
-          <h3>Ảnh đã tải lên:</h3>
-          <p>{imageResponse.message}</p>
-          <img
-            src={`http://localhost:3000/${imageResponse.file.path}`}
-            alt="Uploaded"
-            style={{ width: '200px', height: 'auto' }}
-          />
-        </div>
-      )}
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center p-8">
+      <div className="w-full max-w-lg bg-gray-800 rounded-lg p-6 shadow-lg mb-8">
+        <h2 className="text-2xl font-semibold text-center mb-6">Upload Ảnh</h2>
+        <input
+          type="file"
+          className="w-full p-3 bg-gray-700 text-white rounded-md mb-4"
+          onChange={handleImageChange}
+        />
+        <button
+          className="w-full py-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+          onClick={handleImageUpload}
+          disabled={loadingImage}
+        >
+          {loadingImage ? 'Đang tải ảnh...' : 'Tải lên ảnh'}
+        </button>
+        {imageResponse && (
+          <div className="mt-6 text-center">
+            <h3 className="text-lg font-semibold">Ảnh đã tải lên:</h3>
+            <p>{imageResponse.message}</p>
+          </div>
+        )}
+      </div>
 
-      <h2>Upload Nhạc</h2>
-      <input type="file" onChange={handleMusicChange} />
-      <button onClick={handleMusicUpload} disabled={loadingMusic}>
-        {loadingMusic ? 'Đang tải nhạc...' : 'Tải lên nhạc'}
-      </button>
-      {musicResponse && (
-        <div>
-          <h3>Nhạc đã tải lên:</h3>
-          <p>{musicResponse.message}</p>
-          <audio controls>
-            <source src={`http://localhost:3000/${musicResponse.file.path}`} type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-      )}
+      <div className="w-full max-w-lg bg-gray-800 rounded-lg p-6 shadow-lg">
+        <h2 className="text-2xl font-semibold text-center mb-6">Upload Nhạc</h2>
+        <input
+          type="file"
+          className="w-full p-3 bg-gray-700 text-white rounded-md mb-4"
+          onChange={handleMusicChange}
+        />
+        <button
+          className="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+          onClick={handleMusicUpload}
+          disabled={loadingMusic}
+        >
+          {loadingMusic ? 'Đang tải nhạc...' : 'Tải lên nhạc'}
+        </button>
+        {musicResponse && (
+          <div className="mt-6 text-center">
+            <h3 className="text-lg font-semibold">Nhạc đã tải lên:</h3>
+            <p>{musicResponse.message}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
