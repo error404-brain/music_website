@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick"; 
 import Upload from "./upload";
-import SongList from './songListsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'; // Import the SongList component
+import SongList from './songList'; // Import the SongList component
 
 // Add necessary slick-carousel CSS imports
 import "slick-carousel/slick/slick.css"; 
