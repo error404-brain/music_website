@@ -34,7 +34,7 @@ function App() {
       >
         <div className="text-center mb-8">
           <img
-            src="/hqdefault.jpg"  // Correct path
+            src="http://localhost:3000/uploadImage/logo.jpg"  // Correct path
             alt="MusicHub Logo"
             className="w-24 h-24 mx-auto mb-4"
           />
@@ -100,7 +100,7 @@ function App() {
           <Slider {...carouselSettings}>
             <div className="relative bg-gray-800 p-8 rounded-lg shadow-lg hover:scale-105 transition duration-500">
               <img
-                src="/hqdefault.jpg"  // Correct path for image
+                src="http://localhost:3000/uploadImage/maxresdefault.jpg"  
                 alt="Album 1"
                 className="w-full h-96 object-cover rounded-lg mb-4"
               />
@@ -110,7 +110,7 @@ function App() {
             </div>
             <div className="relative bg-gray-800 p-8 rounded-lg shadow-lg hover:scale-105 transition duration-500">
               <img
-                src="/Album-cua-HIEUTHUHAI_elleman-.jpg"  // Correct path for image
+                src="http://localhost:3000/uploadImage/maxresdefault (1).jpg"  
                 alt="Album 2"
                 className="w-full h-96 object-cover rounded-lg mb-4"
               />
@@ -120,7 +120,7 @@ function App() {
             </div>
             <div className="relative bg-gray-800 p-8 rounded-lg shadow-lg hover:scale-105 transition duration-500">
               <img
-                src="/maxresdefault.jpg"  // Correct path for image
+                src="http://localhost:3000/uploadImage/bia-compressed-2178.jpg" 
                 alt="Album 3"
                 className="w-full h-96 object-cover rounded-lg mb-4"
               />
