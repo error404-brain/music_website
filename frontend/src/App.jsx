@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick"; 
+import Upload from "./upload";
 
 // Add necessary slick-carousel CSS imports
 import "slick-carousel/slick/slick.css"; 
@@ -64,6 +65,14 @@ function App() {
                 className="flex items-center text-gray-400 hover:text-white transition duration-300"
               >
                 <i className="fas fa-music mr-4 text-2xl"></i> Thư viện nhạc
+              </a>
+            </li>
+            <li>
+              <a
+                href="#upload"
+                className="flex items-center text-gray-400 hover:text-white transition duration-300"
+              >
+                <i className="fas fa-upload mr-4 text-2xl"></i> Tải lên nhạc và ảnh
               </a>
             </li>
           </ul>
@@ -137,6 +146,12 @@ function App() {
             <p className="text-gray-400">Tìm kiếm bài hát, nghệ sĩ yêu thích và khám phá thêm.</p>
           </div>
         </div>
+
+        {/* Upload Section */}
+        <section id="upload">
+          <h2 className="text-3xl font-semibold text-white mb-6">Tải lên Nhạc và Ảnh</h2>
+          <Upload />
+        </section>
       </main>
     </div>
   );
