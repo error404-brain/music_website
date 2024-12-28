@@ -14,6 +14,18 @@ module.exports = (sequelize) => {
     artist: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    genreId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    audioFileId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    imageFileId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     }
   });
 

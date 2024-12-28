@@ -1,6 +1,8 @@
+// src/App.jsx
 import React, { useState } from "react";
 import Slider from "react-slick"; 
 import Upload from "./upload";
+import SongList from './songListsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'; // Import the SongList component
 
 // Add necessary slick-carousel CSS imports
 import "slick-carousel/slick/slick.css"; 
@@ -25,7 +27,6 @@ function App() {
 
   return (
     <div className="h-screen w-screen flex bg-black text-white">
-
       {/* Sidebar */}
       <aside
         className={`w-64 bg-black p-6 flex flex-col fixed top-0 left-0 h-full z-30 transform ${
@@ -131,21 +132,8 @@ function App() {
           </Slider>
         </div>
 
-        {/* Featured Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 transform hover:translate-y-1">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Playlist yêu thích</h3>
-            <p className="text-gray-400">Khám phá những bài hát bạn yêu thích và tạo playlist riêng.</p>
-          </div>
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 transform hover:translate-y-1">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Thư viện nhạc</h3>
-            <p className="text-gray-400">Lưu trữ và quản lý các bài hát của bạn ở một nơi dễ dàng.</p>
-          </div>
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 transform hover:translate-y-1">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Tìm kiếm</h3>
-            <p className="text-gray-400">Tìm kiếm bài hát, nghệ sĩ yêu thích và khám phá thêm.</p>
-          </div>
-        </div>
+        {/* Song List Section */}
+        <SongList /> {/* This will display the list of songs */}
 
         {/* Upload Section */}
         <section id="upload">

@@ -3,14 +3,14 @@ module.exports = async (db) => {
   
     // Mối quan hệ giữa Genre và Song
     Genre.hasMany(Song, { foreignKey: 'genreId' });
-    Song.belongsTo(Genre, { foreignKey: 'genreId' });
+    Song.belongsTo(Genre, { foreignKey: 'genreId', as: 'genre' }); 
   
-    // Mối quan hệ giữa Song và AudioFile
-    Song.hasOne(AudioFile, { foreignKey: 'songId' });
+    // Song.js
+    Song.belongsTo(AudioFile, { foreignKey: 'audioFileId', as: 'audioFile' });
     AudioFile.belongsTo(Song, { foreignKey: 'songId' });
   
     // Mối quan hệ giữa Song và ImageFile
-    Song.hasOne(ImageFile, { foreignKey: 'songId' });
+    Song.belongsTo(ImageFile, { foreignKey: 'imageFileId', as: 'imageFile' }); // alias 'imageFile'
     ImageFile.belongsTo(Song, { foreignKey: 'songId' });
   
     console.log('Các mối quan hệ đã được thiết lập!');
