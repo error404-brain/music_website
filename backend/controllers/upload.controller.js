@@ -1,5 +1,4 @@
-const db = require('../databases/Sequelize');
-const { ImageFile, AudioFile } = db;
+const uploadService = require('../services/upload.services');
 
 exports.uploadImage = async (req, res) => {
   if (!req.file) {
@@ -7,17 +6,11 @@ exports.uploadImage = async (req, res) => {
   }
 
   try {
-    // Lưu thông tin ảnh vào cơ sở dữ liệu
-    const image = await ImageFile.create({
-      filePath: req.file.path,
-      format: req.file.mimetype,
-      size: req.file.size,
-    });
-
+    const image = await uploadService.saveImage(req.file);
     res.json({ message: 'Tải ảnh thành công!', file: req.file, image });
   } catch (error) {
     console.error('Lỗi khi lưu ảnh vào cơ sở dữ liệu:', error);
-    res.status(500).send('Lỗi khi lưu ảnh vào cơ sở dữ liệu');
+    res.status(500).send(error.message);
   }
 };
 
@@ -27,16 +20,10 @@ exports.uploadMusic = async (req, res) => {
   }
 
   try {
-    // Lưu thông tin file nhạc vào cơ sở dữ liệu
-    const audio = await AudioFile.create({
-      filePath: req.file.path,
-      format: req.file.mimetype,
-      size: req.file.size,
-    });
-
+    const audio = await uploadService.saveMusic(req.file);
     res.json({ message: 'Tải nhạc thành công!', file: req.file, audio });
   } catch (error) {
     console.error('Lỗi khi lưu nhạc vào cơ sở dữ liệu:', error);
-    res.status(500).send('Lỗi khi lưu nhạc vào cơ sở dữ liệu');
+    res.status(500).send(error.message);
   }
 };

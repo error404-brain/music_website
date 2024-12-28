@@ -1,19 +1,24 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const fs = require('fs');
 const db = require('./databases/Sequelize');
-const uploadRoutes = require('./Routes/upload.route');  // Import routes mới
+const uploadRoutes = require('./Routes/upload.route');
+const songRoutes = require('./Routes/song.route'); // Import routes bài hát
 
+const app = express();
 const PORT = 3000;
+
 app.use(cors());
+app.use(express.json()); 
 app.use(express.static('public'));
 
-// Sử dụng routes
+
 app.use('/api', uploadRoutes);
+app.use('/api/songs', songRoutes); 
 app.use('/uploadImage', express.static('uploadImage'));
+app.use('/uploadMusic', express.static('uploadMusic'));
 
-
+// Tạo thư mục upload nếu chưa tồn tại
 const uploadImageDir = 'uploadImage/';
 const uploadMusicDir = 'uploadMusic/';
 
@@ -34,10 +39,10 @@ app.listen(PORT, (error) => {
 });
 
 // Đồng bộ cơ sở dữ liệu
-// db.sequelize.sync({ force: false }) 
-//   .then(() => {
-//     console.log('Cơ sở dữ liệu đã được đồng bộ hóa thành công!');
-//   })
-//   .catch((err) => {
-//     console.error('Lỗi khi đồng bộ cơ sở dữ liệu:', err);
-//   });
+// db.sequelize.sync({ force: true })
+// .then(() => {
+//   console.log('Cơ sở dữ liệu đã được đồng bộ hóa lại hoàn toàn!');
+// })
+// .catch((err) => {
+//   console.error('Lỗi khi đồng bộ hóa cơ sở dữ liệu:', err);
+// });
