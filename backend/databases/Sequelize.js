@@ -1,6 +1,7 @@
-const { Sequelize } = require('sequelize'); 
-const dbConfig = require('../config/db.config'); 
+const { Sequelize } = require('sequelize');
+const dbConfig = require('../config/db.config');
 
+// Khởi tạo kết nối Sequelize
 const sequelize = new Sequelize(
   dbConfig.database,
   dbConfig.user,
@@ -12,12 +13,16 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize.authenticate()
-  .then(() => {
-    console.log('Kết nối tới cơ sở dữ liệu thành công!');
-  })
-  .catch((err) => {
-    console.error('Lỗi khi kết nối tới cơ sở dữ liệu:', err);
-  });
 
-module.exports = sequelize; 
+const db = {};
+db.Sequelize = Sequelize; 
+db.sequelize = sequelize; 
+
+db.Genre = require('../Models/models.Genre')(sequelize);
+db.Song = require('../Models/models.Song')(sequelize);
+db.AudioFile = require('../Models/models.audio')(sequelize);  
+db.ImageFile = require('../Models/models.imageFile')(sequelize);  
+// Thiết lập các mối quan hệ
+require('./ExtraSetup')(db);
+
+module.exports = db;
