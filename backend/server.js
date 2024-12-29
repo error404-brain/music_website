@@ -3,7 +3,8 @@ const cors = require('cors');
 const fs = require('fs');
 const db = require('./databases/Sequelize');
 const uploadRoutes = require('./Routes/upload.route');
-const songRoutes = require('./Routes/song.route'); // Import routes bài hát
+const songRoutes = require('./Routes/song.route'); 
+
 
 const app = express();
 const PORT = 3000;
