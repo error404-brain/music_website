@@ -1,33 +1,21 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  const Song = sequelize.define('Song', {
+  const Artist  = sequelize.define('Artist', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    artistId: { 
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    genreId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    audioFileId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     imageFileId: {
       type: DataTypes.INTEGER,
       allowNull: true,
-    }
+    },
   });
 
-  return Song;
+  return Artist;
 };

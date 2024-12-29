@@ -22,6 +22,7 @@ db.Genre = require('../Models/models.Genre')(sequelize);
 db.Song = require('../Models/models.Song')(sequelize);
 db.AudioFile = require('../Models/models.audio')(sequelize);  
 db.ImageFile = require('../Models/models.imageFile')(sequelize);  
+db.Artist = require('../Models/models.artist')(sequelize);
 // Thiết lập các mối quan hệ
 require('./ExtraSetup')(db);
 

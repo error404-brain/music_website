@@ -16,8 +16,8 @@ const SongList = () => {
         if (Array.isArray(response.data)) {
           const processedSongs = response.data.map(song => ({
             ...song,
-            audioFile: song.audioFile?.replace('uploadMusic\\', ''), // Remove the prefix
-            imageFile: song.imageFile?.replace('uploadImage\\', '')  // Remove the prefix
+            audioFile: song.audioFile?.replace('uploadMusic\\', ''), 
+            imageFile: song.imageFile?.replace('uploadImage\\', '') 
           }));
           setSongs(processedSongs);
         } else {

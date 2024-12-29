@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from "react";
 import Slider from "react-slick"; 
 import Upload from "./upload";
@@ -29,9 +28,7 @@ function App() {
     <div className="h-screen w-screen flex bg-black text-white">
       {/* Sidebar */}
       <aside
-        className={`w-64 bg-black p-6 flex flex-col fixed top-0 left-0 h-full z-30 transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:relative md:translate-x-0 transition-all duration-300 ease-in-out`}
+        className={`w-64 bg-black p-6 flex flex-col fixed top-0 left-0 h-full z-30 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 transition-all duration-300 ease-in-out`}
       >
         <div className="text-center mb-8">
           <img
@@ -79,6 +76,7 @@ function App() {
           </ul>
         </nav>
       </aside>
+   
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-6 md:p-10 lg:p-12">
@@ -119,21 +117,11 @@ function App() {
                 <h4 className="text-xl font-semibold">Album 2</h4>
               </div>
             </div>
-            <div className="relative bg-gray-800 p-8 rounded-lg shadow-lg hover:scale-105 transition duration-500">
-              <img
-                src="http://localhost:3000/uploadImage/bia-compressed-2178.jpg" 
-                alt="Album 3"
-                className="w-full h-96 object-cover rounded-lg mb-4"
-              />
-              <div className="absolute bottom-6 left-6 text-white bg-black bg-opacity-50 p-4 rounded-lg">
-                <h4 className="text-xl font-semibold">Album 3</h4>
-              </div>
-            </div>
           </Slider>
         </div>
 
         {/* Song List Section */}
-        <SongList /> {/* This will display the list of songs */}
+        <SongList />
 
         {/* Upload Section */}
         <section id="upload">

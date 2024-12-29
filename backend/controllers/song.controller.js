@@ -3,23 +3,29 @@ const path = require('path');
 const songService = require('../services/song.services');
 
 // Lấy tất cả bài hát
+// Lấy tất cả bài hát
 exports.getAllSongs = async (req, res) => {
   try {
-    const songs = await songService.getAllSongs();
-    const songList = songs.map((song) => ({
-      id: song.id,
-      title: song.title,
-      artist: song.artist,
-      genre: song.genre?.name || 'Unknown',
-      audioFile: song.audioFile?.filePath || null,
-      imageFile: song.imageFile?.filePath || null,
-    }));
-    res.json(songList);
+    const songs = await songService.getAllSongs();  // Đảm bảo rằng songService trả về đúng dữ liệu
+    if (songs && songs.length > 0) {
+      const songList = songs.map((song) => ({
+        id: song.id,
+        title: song.title,
+        artist: song.songArtist ? song.songArtist.name : null,  // Dùng alias 'songArtist'
+        genre: song.genre?.name || 'Unknown',
+        audioFile: song.audioFile?.filePath || null,
+        imageFile: song.imageFile?.filePath || null,
+      }));
+      res.json(songList);
+    } else {
+      res.status(404).json({ error: 'No songs found' });
+    }
   } catch (error) {
     console.error('Error retrieving songs:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 // Lấy bài hát theo ID
 exports.getSongbyId = async (req, res) => {

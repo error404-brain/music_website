@@ -1,27 +1,34 @@
 const db = require('../databases/Sequelize');
-const { Song, Genre, AudioFile, ImageFile } = db;
+const { Song, Genre, AudioFile, ImageFile,Artist } = db;
 
 exports.getAllSongs = async () => {
+  try {
     return await Song.findAll({
       include: [
         {
+          model: Artist,
+          as: 'songArtist',  
+        },
+        {
           model: Genre,
           as: 'genre',
-          attributes: ['name'], 
         },
         {
           model: AudioFile,
           as: 'audioFile',
-          attributes: ['filePath'], 
         },
         {
           model: ImageFile,
           as: 'imageFile',
-          attributes: ['filePath'], 
         },
       ],
     });
-  };
+  } catch (error) {
+    console.error('Error retrieving songs from service:', error);
+    throw error;  // Đảm bảo lỗi được ném ra để controller có thể bắt và xử lý
+  }
+};
+
 
 exports.getSongById = async (id) => {
   return await db.Song.findByPk(id);
